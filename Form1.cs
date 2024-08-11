@@ -53,6 +53,7 @@ namespace WindowsFormsApp1
             textBox1.ResetText();
             richTextBox1.ResetText();
             button1.Enabled = true;
+            button3.Enabled = false;
         }
 
         // check the text
@@ -124,6 +125,7 @@ namespace WindowsFormsApp1
             textBox1.ResetText();
             richTextBox1.ResetText();
             button1.Enabled = true;
+            button3.Enabled = false;
         }
 
         // delete data
