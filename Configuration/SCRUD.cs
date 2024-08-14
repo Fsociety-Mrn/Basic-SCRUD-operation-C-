@@ -18,6 +18,43 @@ namespace WindowsFormsApp1.Configuration
         public string column_status = "status";
         public string column_date = "date";
 
+
+        // Search data from database and populate DataGridView
+        public DataSet Search(string name, string order= "DESC")
+        {
+            try
+            {
+                connection.Open();
+
+                // setup view all query
+                string query = $"SELECT * FROM `{table_name}` " +
+                               $"WHERE `{column_name}` LIKE '{name}%'" +
+                               $"ORDER BY {column_date} {order}";
+
+                // Create a DataSet to store the data
+                DataSet dataSet = new DataSet();
+
+                // Create a MySqlDataAdapter to execute the query and fill the DataSet
+                using (adapter = new MySqlDataAdapter(query, connection))
+                {
+                    // Fill the DataSet
+                    adapter.Fill(dataSet, "YourData");
+
+                    // Close the connection
+                    connection.Close();
+
+                    return dataSet;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+        }
+
         // Create data
         public String Create(string name,string status)
         {
@@ -59,7 +96,8 @@ namespace WindowsFormsApp1.Configuration
                 connection.Open();
 
                 // setup view all query
-                string query = $"SELECT * FROM `{table_name}` ORDER BY {column_date} {order}";
+                string query = $"SELECT * FROM `{table_name}` " +
+                    $"ORDER BY {column_date} {order}";
 
                 // Create a DataSet to store the data
                 DataSet dataSet = new DataSet();

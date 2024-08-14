@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mysqlx.Crud;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +32,7 @@ namespace WindowsFormsApp1
         private void update_datagridview(string order = "DESC")
         {
             // Get data from the database
-            DataSet dataSet = shrud.Read(order);
+            DataSet dataSet = shrud.Search(textBox2.Text, order);
 
             // Check if data retrieval was successful
             if (dataSet != null)
@@ -148,6 +149,24 @@ namespace WindowsFormsApp1
             reset();
             MessageBox.Show(message);
 
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+           
+            // Get data from the database
+            DataSet dataSet = shrud.Search(textBox2.Text);
+            dataGridView1.DataSource = dataSet.Tables["YourData"];
+
+        }
+
+        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                update_datagridview();
+            }
         }
     }
 }
