@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Configuration"
+    "\\Configuration",
+    "\\MsConfiguration"
   ],
-  "SelectedNode": "\\Form1.cs",
+  "SelectedNode": "\\MsConfiguration\\MsSCRUD.cs",
   "PreviewInSolutionExplorer": false
 }

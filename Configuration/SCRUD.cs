@@ -1,14 +1,6 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
 
 namespace WindowsFormsApp1.Configuration
 {
@@ -20,7 +12,7 @@ namespace WindowsFormsApp1.Configuration
 
 
         // Search data from database and populate DataGridView
-        public DataSet Search(string name, string order= "DESC")
+        public DataSet Search(string name, string order = "DESC")
         {
             try
             {
@@ -56,7 +48,7 @@ namespace WindowsFormsApp1.Configuration
         }
 
         // Create data
-        public String Create(string name,string status)
+        public String Create(string name, string status)
         {
             try
             {
@@ -74,14 +66,14 @@ namespace WindowsFormsApp1.Configuration
 
                     // Execute the query
                     cmd.ExecuteNonQuery();
-        
+
                     connection.Close();
 
                     return ("data is created");
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 connection.Close();
                 return ($"Error: {ex.Message}");
@@ -89,7 +81,7 @@ namespace WindowsFormsApp1.Configuration
         }
 
         // Read data from the database and populate DataGridView
-        public DataSet Read(string order="DESC")
+        public DataSet Read(string order = "DESC")
         {
             try
             {
@@ -103,8 +95,8 @@ namespace WindowsFormsApp1.Configuration
                 DataSet dataSet = new DataSet();
 
                 // Create a MySqlDataAdapter to execute the query and fill the DataSet
-                 using (adapter = new MySqlDataAdapter(query, connection))
-                 {
+                using (adapter = new MySqlDataAdapter(query, connection))
+                {
                     // Fill the DataSet
                     adapter.Fill(dataSet, "YourData");
 
@@ -112,8 +104,8 @@ namespace WindowsFormsApp1.Configuration
                     connection.Close();
 
                     return dataSet;
-                 }
-       
+                }
+
             }
             catch (Exception ex)
             {
