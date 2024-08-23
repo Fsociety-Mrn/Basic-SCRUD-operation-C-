@@ -1,5 +1,5 @@
 # Basic SCRUD Operation
-this project aim to create basic scrud operation using c# and mysql
+this project aim to create basic scrud operation using c# and mysql or ms sql
 
 <!-- ## Table of Contents
 * [setup and installation](#link-to-download)
